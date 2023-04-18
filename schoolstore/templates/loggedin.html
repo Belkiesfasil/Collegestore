@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loggedin</title>
+  <style>
+    body{
+         background-color:#bf80ff;}
+  </style>
+</head>
+<body>
+<h2> You are Successfully Logged In...Congratzz</h2>
+<form action="{% url 'dropdownapp:getdata' %}" method="get">
+    {% csrf_token %}
+<!--        <input class="form-control me-2" type="search" placeholder="login" name="q" aria-label="login">-->
+
+    <button type="submit" >Click Here</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+
+
+          <li class="nav-item">
+                  <h1 style="color:black;font-size:20px;">
+          <a class="nav-link" href="#">Registration</a>
+                  <h1>
+        </li>
+
+        <li class="nav-item dropdown {% if 'schooapp' in request.path %} active {% endif %}">
+
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <h1 style="font-size:20px;font-color:black;"> Department</h1>
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'schoolapp:allStream' %}">Courses</a></li>
+            {% for cat in links %}
+            <li>
+
+                <a class="dropdown-item" href="{{cat.get_url}}">{{cat.name}}</a>
+
+            </li>
+
+            {% endfor %}
+
+          </ul>
+        </li>
+  </ul>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+             <h1 style="color:black;font-size:20px;">
+                <a class="nav-link" href="#">Login</a>
+             </h1>
+        </li>
+        </ul>
+        <form class="d-flex" action="{% url 'schoolapp:login' %}" method="get">
+        {% csrf_token %}
+<!--        <input class="form-control me-2" type="search" placeholder="login" name="q" aria-label="login">-->
+        <button class="btn btn-outline-success" type="submit"></button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        body{background-color:#e6004c;}
+    </style>
+</head>
+<body>
+<h2  style="margin-left:450px;margin-top:200px;">Login Details</h2>
+<form style="margin-left:450px;" action="login" method="post">
+    {% csrf_token %}
+    <input style="background-color:#ff9999;" type="text" name="username" placeholder="Enter your Username"><br>
+    <input style="background-color:#ff9999;" type="password" name="password" placeholder="Enter your password"><br>
+
+    <input style="background-color:#ff9999;" type="submit" ><br>
+    <a href="{% url 'loginapp:register' %}">Register link</a>
+
+</form>
+
+</body>
+</html>

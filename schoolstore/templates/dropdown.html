@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form filling</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body{background-color:#ff8080;}
+    </style>
+</head>
+<body>
+<h2 style="margin-left:450px;margin-top:100px;">Registration Form</h2>
+<form style="margin-left:450px;" action="{% url 'loginapp:order' %}" method="post">
+    {% csrf_token %}
+    <label>USERNAME:</label><br>
+    <input type="text" name="username" placeholder="Enter your UserName"><br>
+    <label>NAME:</label><br><input type="text" name="name" placeholder="Enter yourName"><br>
+    <label>DOB:</label><br><input  type="date" name="date" placeholder="Enter your DOB"><br>
+    <label>AGE:</label><br><input type="text" name="age" placeholder="Enter your Age"><br>
+   <label> GENDER:</label><br><input type="text" name="gender" placeholder="Enter your Gender"><br><BR>
+
+<label>
+PHONE NUMBER :
+</label>
+<input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/>
+<input type="text" name="phone" placeholder="phone no." size="10"/ required><br>
+   <label> MAIL ID:</label><br><input type="email" name="email" placeholder="Enter your Mail Id"><br>
+    <label>ADDRESS:</label><br>
+<textarea cols="80" rows="5" placeholder="Enter your Address" value="address" style="width:550px;" required>
+</textarea><br>
+    <label>PASSWORD:</label><br><input type="text" name="password" placeholder="Enter Password"><br>
+   <label>CONFIRM PASSWORD:</label><br> <input type="text" name="password1" placeholder="Enter confirm password"><br>
+<!--    <input type="text" name="COURSES" placeholder="Courses"><br>-->
+
+
+
+
+<!--  <div class="container">-->
+<!--  <div class="card body">-->
+<!--    <br/>-->
+<!--    <br/>-->
+<!--    <br/>-->
+
+
+    <b>DEPARTMENT:</b><br>
+        <select name="dept" id="Department" class="form-control" style="width:550px;">
+            <option value="0">--Select Department--</option>
+            {% for item in Department  %}
+            <option value="{{ item.id }}">{{ item.departmentname }}</option>
+            {% endfor %}
+        </select>
+    <br/>
+    <b>COURSE:</b>
+        <select name="course" id="Course" class="form-control" style="width:550px;">
+            <option value="0">--Select Course--</option>
+            {% for item in Course  %}
+            <option value="{{ item.deptid_id }}">{{ item.coursename }}</option>
+            {% endfor %}
+        </select><br>
+
+    <b>PURPOSE:</b><br>
+    <select name="course" id="purpose" class="form-control" style="width:550px;">
+            <option value="0">--Select Purpose--</option>
+            <option>For Enquiry</option>
+            <option>Place Order</option>
+            <option>Return</option>
+            <option>Admission Details</option>
+            <option></option>
+
+        </select><br>
+
+    <b>MATERIALS PROVIDE:</b><br>
+    Note Book:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br>
+    Pen:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br>
+    Exam Papers:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br>
+    Study Materials:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br><br>
+       <input type="submit" name="Submit & Logout">
+</form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+<!--   </div>-->
+
+<!--</div>-->
+
+
+
+
+<script>
+
+$(document).ready(function(){
+
+ var Department = $("#Department");
+ var Course = $("#Course");
+ var $options = Course.find('option');
+ Department.on('change',function(){
+    Course.html($options.filter('[value="'+ this.value  +'"]'));
+ }).trigger('change');
+
+
+});
+</script>
+</body>
+</html>

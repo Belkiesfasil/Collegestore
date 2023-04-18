@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form filling here</title>
+    <style>
+        body{background-color:#ff8080;}
+    </style>
+
+
+</head>
+<body>
+<h2 style="margin-left:450px;margin-top:100px;">Registration Form</h2>
+<form style="margin-left:450px;" action="{% url 'dropdownapp:getdata' %}" method="post">
+    {% csrf_token %}
+    <label>Username:</label><br>
+    <input type="text" name="username" placeholder="Enter your UserName"><br>
+    Name:<br><input type="text" name="name" placeholder="Enter yourName"><br>
+    DOB:<br><input  type="date" name="date" placeholder="Enter your DOB"><br>
+    Age:<br><input type="text" name="age" placeholder="Enter your Age"><br>
+    Gender:<br><input type="text" name="gender" placeholder="Enter your Gender"><br>
+
+<label>
+Phone number :<br>
+</label>
+<input type="text" name="country code" placeholder="Country Code"  value="+91" size="2"/>
+<input type="text" name="phone" placeholder="phone no." size="10"/ required><br>
+    email:<br><input type="email" name="email" placeholder="Enter your Mail Id"><br>
+    ADDRESS:<br>
+<textarea cols="80" rows="5" placeholder="Enter your Address" value="address" required>
+</textarea><br>
+    password:<br><input type="text" name="password" placeholder="Enter Password"><br>
+   confirm password:<br> <input type="text" name="password1" placeholder="Enter confirm password"><br>
+<!--    <input type="text" name="COURSES" placeholder="Courses"><br>-->
+    Materials provide:<br>
+    Note Book:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br>
+    Pen:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br>
+    Exam Papers:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br>
+    Study Materials:<input type="checkbox" name="MATERIALS PROVIDE" placeholder="Materials Provide"><br>
+
+    Department:<br><select  name="department" id="department" >
+             <option value="" selected="selected">---Select Department---</option>
+             <option value="Course">Courses</option>
+             <option value="Biology Science" >Biology Science</option>
+             <option value="Computer Science">Computer Science</option>
+             <option value="Commerce">Commerce</option>
+             <option value="Economics">Economics</option>
+             <option value="Humanities">Humanities</option>
+                    </select><br><br>
+    Courses:<br><select name="courses" id="courses">
+
+           </select>
+
+
+  <br><br>
+    <input type="submit" name="Submit & Logout">
+ </form>
+
+
+
+
+
+
+
+
+</body>
+</html>

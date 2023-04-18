@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+     {% if stream %}
+          {{ stream.description|truncatewords:155 }}
+     {% else %}
+          Welcome to the world of knowledge.....
+     {% endif %}
+{% endblock %}
+
+{% block title %}
+{% if stream %}
+          {{stream.name}}--College Store
+{% else %}
+          See our courses
+{% endif %}
+{% endblock %}
+{% block content %}
+{% if category %}
+<div>
+     <div class="row my_row_class">
+         <div class="mx_auto">
+             <p><a href="{% url 'schoolapp:allStream' %}">OUR COURSES</a></p>
+     </div>
+          </div>
+</div>
+{% endif %}
+<div class="mx_auto">
+     {% if category %}
+     <img class="my_image" style="width:150px;height:200px;" src="{{stream.image.url}}" alt="{{stream.name}}">
+</div>
+<br>
+<div>
+     <h1 class="text-center my_title">{{stream.name}}</h1>
+     <p class="text-justify">{{stream.description}}</p>
+</div>
+{% else %}
+<div>
+<img class="my_image my_image_padding" style="width:1250px;height:500px;" src="{% static 'image/banner.jpg' %}" alt="Our courses">
+</div>
+<br>
+<div>
+     <h1 class="text_center my_title">Our College-store </h1>
+     <p class="text-justify">It is my great pleasure to welcome you to this College  website hoping you will find it informative.
+
+
+ In this College, we are striving to achieve our vision of being an outstanding educational and research college serving the needs of our country and addressing the challenges faced by the society. This College  is among the first-ranked Colleges.  </div>
+{% endif %}
+<div class="container" >
+<!--     <div class="row mx_auto">-->
+<!--          {% for product in products.object_list %}-->
+<!--           <div class="my_bottom_margin col-9 col-sm-12 col-md-4  xol-lg-4">-->
+<!--               <div class="card text-center" style="min-width:18rem;">-->
+<!--                   <a href="{{product.get_url}}"><img class="card-img-top my_image" style="width:150px;height:150px;" src="{{product.image.url}}" alt="{{product.name}}"></a>-->
+
+<!--                <div class="card-body">-->
+<!--                    <h4>{{product.name}}</h4>-->
+<!--&lt;!&ndash;                    <p>{{product.fees}}</p>&ndash;&gt;-->
+<!--                    </div>-->
+<!--               </div>-->
+<!--            </div>-->
+<!--           {% endfor %}-->
+<!--     </div>-->
+    <div class="mx_auto">
+        {% if products.paginator.num_pages > 1 %}
+
+        <hr>
+        <div class="text-center">
+         {% for pg in products.paginator.page_range %}
+          <a href="?page={{pg}}" class= "btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{pg}}</a>
+        {% endfor %}
+    </div>
+{% endif %}
+    </div>
+    <br>
+</div>
+
+{% endblock %}
+
